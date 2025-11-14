@@ -1,114 +1,111 @@
-⚡ Electricity Consumption Forecasting for Grid Optimization (Romania)
-📘 Project Overview
+# Electricity Consumption Forecasting for Grid Optimization (Romania)
+## 1. Project Overview
 
-This project addresses a key operational challenge in modern energy systems: accurately forecasting short-term electricity demand to improve grid balancing, energy market efficiency, and renewable energy integration.
+This project focuses on short-term electricity demand forecasting to support grid balancing, market operations, and renewable energy integration.
+A statistical time-series model was built using 6 years (2019–2025) of hourly national grid consumption data from Romania.
+The model generates week-ahead (168-hour) forecasts for operational planning.
 
-Using 6 years of hourly consumption data (2019–2025) from the Romanian national grid, a statistical time-series forecasting model was developed to predict electricity demand 168 hours (1 week) ahead.
+## 2. Key Results and Business Impact
+### 2.1 Forecasting Accuracy
 
-📊 Key Results & Business Impact
-🔧 Primary Metric (MAPE)
+MAPE: 11.64%
 
-11.64% Mean Absolute Percentage Error
-→ Achieved industry-standard accuracy for week-ahead load forecasting without external features (e.g., weather).
+Achieves industry-standard performance for week-ahead forecasting without external drivers such as weather.
 
-📉 Performance Improvement
+### 2.2 Improvement Over Baseline
 
-19.5% improvement over the Naive Baseline (Last Week Same Hour).
-→ Reduces operational risk and reliance on expensive spinning reserves.
+19.5% improvement compared to a Naive baseline (Last Week Same Hour).
 
-💶 Quantified Savings
+Reduces operational uncertainty and lowers dependency on costly spinning reserves.
 
-€24–39 Million projected annual optimized value, based on:
+### 2.3 Financial Impact
 
-Improved day-ahead market bidding
+Estimated annual savings: €24–39 million
 
-Reduced fuel consumption
+Savings derive from:
 
-Lower reserve capacity usage
+Optimized day-ahead energy market decisions
 
-⚙️ Operational Impact
+Reduced fuel usage
 
-Reduced average forecast error: ±749 MW
-→ Enables more precise unit commitment, scheduling, and maintenance planning for power plants.
+Lower reserve activation requirements
 
-🛠️ Technical Stack
+### 2.4 Operational Reliability
+
+Average absolute error: ±749 MW
+
+Supports improved unit commitment, dispatch planning, and maintenance scheduling.
+
+## 3. Technical Stack
 
 Language: Python 3.10
 
-Core Libraries: Pandas, NumPy, Statsmodels (SARIMA), Prophet (for comparison)
+Libraries: Pandas, NumPy, Statsmodels (SARIMA), Prophet (comparison only)
 
-Database: PostgreSQL (optimized for time-series storage/indexing)
+Database: PostgreSQL (time-series structured storage)
 
 Visualization: Matplotlib, Seaborn
 
 Version Control: Git
 
-📈 Methodology
-1. Data Acquisition & Preparation
+## 4. Methodology
+### 4.1 Data Preparation
 
-Collected 54,160 hourly readings spanning 6 years.
+Used 54,160 hourly observations covering 6 years.
 
-Performed rigorous data cleaning and anomaly removal.
+Performed quality checks to remove abnormal or corrupted readings.
 
-2. Exploratory Data Analysis (EDA)
+### 4.2 Exploratory Data Analysis
 
-Identified strong multi-level seasonality:
+Identified strong seasonal patterns:
 
-24-Hour Cycle: 96% correlation — morning/evening peaks
+Daily Seasonality (24 hours): High correlation (96%), reflecting standard load fluctuations.
 
-168-Hour Weekly Cycle: 85% correlation — industrial & commercial patterns
+Weekly Seasonality (168 hours): Strong pattern (85%), influenced by business and industrial cycles.
 
-Annual Cycle: W-shaped — driven by winter heating and summer cooling loads
+Annual Seasonality: W-shaped pattern due to heating and cooling demands.
 
-3. Feature Engineering
+### 4.3 Feature Engineering
 
-Created 80+ engineered features, including:
+Created more than 80 features, including:
 
-Lag variables
+Lagged consumption values
 
-Rolling window statistics
+Rolling means and variances
 
-Day/week/month flags
+Day-of-week and month indicators
 
-Cyclical time encodings (sine/cosine)
+Cyclical encodings (sine/cosine) for hours and seasons
 
-4. Model Selection
+These features improved model stability and seasonal capture.
 
-Evaluated multiple forecasting models:
+### 4.4 Model Evaluation and Selection
 
-Model	Purpose
-Naive Baseline	Benchmark
-ARIMA	Non-seasonal modeling
-Prophet	Trend/seasonality heuristic
-SARIMA	Chosen due to best fit and lowest AIC/BIC
+Tested multiple approaches:
 
-SARIMA effectively captured the strong 24-hour seasonality and achieved the highest accuracy.
+Model	Notes
+Naive Baseline	Benchmark reference
+ARIMA	Unable to capture multi-seasonality
+Prophet	Good for trend, less effective here
+SARIMA (Selected)	Best overall performance, lowest AIC/BIC
 
-5. Validation Strategy
+SARIMA was selected because it best captured daily periodicity and provided the lowest statistical error.
 
-Used walk-forward validation.
+### 4.5 Validation Strategy
 
-Final evaluation on a completely held-out 168-hour (1 week) period to mimic real deployment.
+Applied walk-forward validation, training on historical data and evaluating on unseen periods.
 
-🚀 Future Enhancements
+Final performance measured on a held-out 168-hour test window, representing real operational usage.
 
-To further improve accuracy (target: <10% MAPE), upcoming improvements will include:
+## 5. Future Enhancements
+### 5.1 Weather-Driven Forecasting
 
-🌦️ 1. Weather Integration (SARIMAX)
+Integrate temperature, humidity, and wind speed using SARIMAX to capture HVAC-driven variability and improve accuracy.
 
-Temperature
+### 5.2 Holiday and Event Indicators
 
-Humidity
+Introduce binary markers for national holidays and major events to reduce systematic over-prediction during reduced commercial activity.
 
-Wind speed
-→ Captures HVAC-driven load variations.
+### 5.3 Renewable Generation Forecasts
 
-🎉 2. Holiday & Event Indicators
-
-Flags for major Romanian holidays
-→ Reduces systematic over-forecasting during low-activity periods.
-
-☀️ 3. Renewable Production Data
-
-Incorporate wind & solar generation forecasts
-→ Enables net-load forecasting, more relevant for grid operators.
+Add solar and wind generation data to forecast net load, improving relevance for transmission operators and market planning.
