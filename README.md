@@ -1,3 +1,6 @@
+![Internship](https://img.shields.io/badge/Internship-Shell%20×%20AICTE-FFD500?style=for-the-badge&logo=shell&logoColor=white)
+![Impact](https://img.shields.io/badge/Financial%20Impact-€24M--39M%20Savings-E31E24?style=for-the-badge)
+![Accuracy](https://img.shields.io/badge/MAPE-11.64%25-brightgreen?style=for-the-badge)
 # 🔋 Electricity Consumption Forecasting for Grid Optimization (Romania) ⚡️
 ## 1. Project Overview 🏭
 
@@ -31,6 +34,10 @@ Average absolute error: ±749 MW
 Supports improved unit commitment, dispatch planning, and maintenance scheduling.
 
 ## 3. 🛠️ Technical Stack 
+![Python](https://img.shields.io/badge/Python-3.10-3776AB?style=flat-square&logo=python&logoColor=white)
+![Tableau](https://img.shields.io/badge/Visualization-Tableau-E97627?style=flat-square&logo=tableau&logoColor=white)
+![Statsmodels](https://img.shields.io/badge/Model-SARIMA-blue?style=flat-square)
+![PostgreSQL](https://img.shields.io/badge/Database-PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
 
 Language: Python 3.10
 Libraries: Pandas, NumPy, Statsmodels (SARIMA), Prophet (comparison only)
@@ -90,5 +97,6 @@ Integrate temperature, humidity, and wind speed using SARIMAX to capture HVAC-dr
 Introduce binary markers for national holidays and major events to reduce systematic over-prediction during reduced commercial activity.
 
 ### 5.3 ♻️ Renewable Generation Forecasts
-
+![SARIMAX](https://img.shields.io/badge/Feature-Weather%20Exogenous-blue)
+![Renewables](https://img.shields.io/badge/Net%20Load-Solar%20%26%20Wind-green)
 Add solar and wind generation data to forecast net load, improving relevance for transmission operators and market planning.
